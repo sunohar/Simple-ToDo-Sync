@@ -5,16 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple ToDo Sync</title>
+    <link rel="stylesheet" href="todo.css">
 </head>
 <body>
-    <h3>Simple ToDo Sync</h3>
-    <input type="text" name="todoText" id="todoText">
-    <button id="btnAdd">Add!</button>
-    <div>
-        <button id="btnClear">Clear!!</button>
-        <button id="btnRefresh">Refresh</button>
+    <div class="title">
+        <h3>Simple ToDo Sync</h3>
     </div>
-    <div id="taskList">
+    <div class="taskinput">
+        <input type="text" name="todoText" id="todoText" style="width:90%">
+        <button id="btnAdd">Add</button>
+    </div>
+    <div>
+        <!-- <button id="btnClear">Clear!!</button> -->
+        <!-- <button id="btnRefresh">Refresh</button> -->
+    </div>
+    <div class="tasklist" id="taskList">
     </div>
     <script src="todo.js"></script>
 </body>

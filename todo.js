@@ -1,5 +1,5 @@
 function setItem() {
-    console.log("Task Added");
+    console.log("Taska Updated");
 }
 
 function onError(error) {
@@ -12,12 +12,15 @@ function clearTasks() {
 }
 
 function deleteTask(taskDesc) {
+    console.log("Delete task " + taskDesc)
+    // if (confirm("Are You Sure???") == true) {
     let current_tasks = browser.storage.sync.get('tasks')
     current_tasks.then((data) => {
         taskList = data.tasks
         tasks = taskList.filter(task => task.taskDesc !== taskDesc)
-        browser.storage.sync.set({ tasks }).then(setItem, onError);
+        browser.storage.sync.set({ tasks }).then(setItem, onError)
     })
+    // }
 }
 
 function displayTasks() {
@@ -33,8 +36,10 @@ function displayTasks() {
             let tag = document.createElement("p");
             tag.innerHTML +=
                 `
-                <div> ${idx + 1}. ${task.taskDesc}
-                    <a href="#" class="delBtn" id="${task.taskDesc}">x</a>
+                <div class=task> ${idx + 1}. ${task.taskDesc}
+                    <a href="#" class="delBtn" id="${task.taskDesc}">
+                        <img src="icons/delete.png" alt="delete icon" width="16" height="16"> 
+                    </a>
                 </div>
                 `
             taskListDiv.appendChild(tag);
@@ -43,12 +48,12 @@ function displayTasks() {
         delBtns = document.getElementsByClassName("delBtn")
         for (var i = 0; i < delBtns.length; i++) {
             delBtns[i].addEventListener("click", function (e) {
-                deleteTask(e.target.id)
+                deleteTask(e.target.parentNode.id)
             })
         }
 
     })
-    // console.log("Tasks Refreshed.")
+    console.log("Tasks Refreshed.")
 }
 
 function addTask() {
@@ -75,10 +80,10 @@ function addTask() {
 
 
 window.addEventListener('load', displayTasks)
-document.getElementById("btnRefresh").addEventListener("click", displayTasks);
+// document.getElementById("btnRefresh").addEventListener("click", displayTasks);
 document.getElementById("btnAdd").addEventListener("click", addTask);
 browser.storage.onChanged.addListener(displayTasks);
-document.getElementById("btnClear").addEventListener("click", clearTasks);
+// document.getElementById("btnClear").addEventListener("click", clearTasks);
 
 document.getElementById("todoText").addEventListener("keypress", function (event) {
     // If the user presses the "Enter" key on the keyboard

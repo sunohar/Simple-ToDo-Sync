@@ -1,0 +1,39 @@
+body {
+    background-color: cornsilk;
+}
+
+.title {
+    background-color: burlywood;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.taskinput {
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 5px;
+}
+
+#btnAdd {
+    margin-left: 2px;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    border-radius: 10%;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+}
+
+.delBtn {
+    margin-left: 5px;
+}
+
+#taskList {
+    background-color: bisque;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
