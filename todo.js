@@ -30,19 +30,25 @@ function displayTasks() {
         if (!taskList) {
             taskList = [];
         }
-        let taskListDiv = document.getElementById("taskList");
+        let taskListDiv = document.getElementById("taskList")
         taskListDiv.innerHTML = '';
         taskList.forEach((task, idx) => {
-            let tag = document.createElement("p");
-            tag.innerHTML +=
-                `
-                <div class=task> ${idx + 1}. ${task.taskDesc}
-                    <a href="#" class="delBtn" id="${task.taskDesc}">
-                        <img src="icons/delete.png" alt="delete icon" width="16" height="16"> 
-                    </a>
-                </div>
-                `
-            taskListDiv.appendChild(tag);
+            let ptag = document.createElement("p")
+            ptag.className = "task"
+            ptag.textContent = `${idx + 1}. ${task.taskDesc}`
+            taskListDiv.appendChild(ptag)
+
+            let atag = document.createElement("a")
+            atag.className = "delBtn"
+            atag.id = `${task.taskDesc}`
+            atag.href = "#"
+            ptag.appendChild(atag)
+
+            let imgtag = document.createElement("img")
+            imgtag.src = "icons/delete.png"
+            imgtag.width = "16"
+            imgtag.height = "16"
+            atag.appendChild(imgtag)
         })
 
         delBtns = document.getElementsByClassName("delBtn")
